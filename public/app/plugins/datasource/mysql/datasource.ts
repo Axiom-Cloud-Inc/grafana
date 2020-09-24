@@ -3,8 +3,8 @@ import ResponseParser from './response_parser';
 import MysqlQuery from 'app/plugins/datasource/mysql/mysql_query';
 import { getBackendSrv } from '@grafana/runtime';
 import { ScopedVars } from '@grafana/data';
-import defaultTemplateSrv, { TemplateSrv } from 'app/features/templating/template_srv';
-import defaultTimeSrv, { TimeSrv } from 'app/features/dashboard/services/TimeSrv';
+import { getTemplateSrv, TemplateSrv } from 'app/features/templating/template_srv';
+import { getTimeSrv, TimeSrv } from 'app/features/dashboard/services/TimeSrv';
 //Types
 import { MysqlQueryForInterpolation } from './types';
 import { getSearchFilterScopedVar } from '../../../features/variables/utils';
@@ -18,8 +18,8 @@ export class MysqlDatasource {
 
   constructor(
     instanceSettings: any,
-    private readonly templateSrv: TemplateSrv = defaultTemplateSrv,
-    private readonly timeSrv: TimeSrv = defaultTimeSrv
+    private readonly templateSrv: TemplateSrv = getTemplateSrv(),
+    private readonly timeSrv: TimeSrv = getTimeSrv()
   ) {
     this.name = instanceSettings.name;
     this.id = instanceSettings.id;

@@ -16,12 +16,11 @@ import {
   TimeSeries,
 } from '@grafana/data';
 import { Scenario, TestDataQuery } from './types';
-import { getBackendSrv, toDataQueryError } from '@grafana/runtime';
+import { getBackendSrv, toDataQueryError, getTemplateSrv, TemplateSrv } from '@grafana/runtime';
 import { queryMetricTree } from './metricTree';
 import { from, merge, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { runStream } from './runStreams';
-import defaultTemplateSrv, { TemplateSrv } from 'app/features/templating/template_srv';
 import { getSearchFilterScopedVar } from 'app/features/variables/utils';
 
 type TestData = TimeSeries | TableData;
@@ -29,7 +28,7 @@ type TestData = TimeSeries | TableData;
 export class TestDataDataSource extends DataSourceApi<TestDataQuery> {
   constructor(
     instanceSettings: DataSourceInstanceSettings,
-    private readonly templateSrv: TemplateSrv = defaultTemplateSrv
+    private readonly templateSrv: TemplateSrv = getTemplateSrv()
   ) {
     super(instanceSettings);
   }
