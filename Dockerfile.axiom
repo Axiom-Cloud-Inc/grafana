@@ -1,0 +1,15 @@
+FROM golang:1.15.1-alpine3.12 as go-builder
+RUN apk add --no-cache gcc g++
+WORKDIR $GOPATH/src/github.com/grafana/grafana
+COPY go.mod go.sum ./
+RUN go mod verify
+COPY pkg pkg
+COPY build.go package.json ./
+RUN go run build.go build
+
+FROM grafana/grafana as base
+COPY public/ /usr/share/grafana/public
+EXPOSE 3000
+COPY --from=go-builder /go/src/github.com/grafana/grafana/bin/linux-amd64/grafana-server /go/src/github.com/grafana/grafana/bin/linux-amd64/grafana-cli ./bin/
+USER grafana
+ENTRYPOINT [ "/run.sh" ]
