@@ -1,6 +1,6 @@
 // Libraries
 import React, { FC } from 'react';
-import { css } from 'emotion';
+// import { css } from 'emotion';
 
 // Components
 import { UserSignup } from './UserSignup';
@@ -9,14 +9,14 @@ import LoginCtrl from './LoginCtrl';
 import { LoginForm } from './LoginForm';
 import { ChangePassword } from '../ForgottenPassword/ChangePassword';
 import { Branding } from 'app/core/components/Branding/Branding';
-import { HorizontalGroup, LinkButton } from '@grafana/ui';
+// import { HorizontalGroup, LinkButton } from '@grafana/ui';
 import { LoginLayout, InnerBox } from './LoginLayout';
-import config from 'app/core/config';
+// import config from 'app/core/config';
 
-const forgottenPasswordStyles = css`
-  padding: 0;
-  margin-top: 4px;
-`;
+// const forgottenPasswordStyles = css`
+//   padding: 0;
+//   margin-top: 4px;
+// `;
 
 export const LoginPage: FC = () => {
   document.title = Branding.AppTitle;
@@ -47,7 +47,7 @@ export const LoginPage: FC = () => {
                       passwordHint={passwordHint}
                       isLoggingIn={isLoggingIn}
                     >
-                      {!(ldapEnabled || authProxyEnabled) ? (
+                      {/* {!(ldapEnabled || authProxyEnabled) ? (
                         <HorizontalGroup justify="flex-end">
                           <LinkButton
                             className={forgottenPasswordStyles}
@@ -59,7 +59,7 @@ export const LoginPage: FC = () => {
                         </HorizontalGroup>
                       ) : (
                         <></>
-                      )}
+                      )} */}
                     </LoginForm>
                   </>
                 )}

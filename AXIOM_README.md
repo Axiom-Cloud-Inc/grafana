@@ -7,3 +7,4 @@
 - `yarn install --pure-lockfile --no-progress`
 - `./node_modules/.bin/grunt build`
 - `docker build -t axcl/grafana-portal:v0.0.1 -f Dockerfile.axiom .`
+- `docker run -p 3000:3000 axcl/grafana-portal:v0.0.1`

@@ -39,7 +39,7 @@ export class Branding {
   static MenuLogo = MenuLogo;
   static LoginBoxBackground = LoginBoxBackground;
   static AppTitle = 'Axiom Cloud';
-  static LoginTitle = "Welcome to Axiom Cloud's Customer Web Portal";
+  static LoginTitle = 'Customer Web Portal';
   static GetLoginSubTitle = () => {
     const slogans = [
       '',
